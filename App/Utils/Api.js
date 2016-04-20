@@ -1,0 +1,30 @@
+const Api = {
+  getBio(username) {
+    username = username.toLowerCase().trim();
+    var url = `https://api.github.com/users/${username}`;
+    return fetch(url)
+            .then((res) => res.json());
+  },
+  getRepos(username) {
+    username = username.toLowerCase().trim();
+    var url = `https://api.github.com/users/${username}/repos`;
+    return fetch(url)
+            .then((res) => res.json());
+  },
+  getNotes(username) {
+    username = username.toLowerCase().trim();
+    var url = `https://github-user.firebaseio.com/message_list.json`;
+    return fetch(url)
+            .then((res) => res.json());
+  },
+  addNote(username, note) {
+    username = username.toLowerCase().trim();
+    var url = `https://github-user.firebaseio.com/message_list.json`;
+    return fetch(url, {
+      method: 'post',
+      data: {"user_id" : username, "text" : note}
+    }).then((res) => res);
+  },
+};
+
+module.exports = Api;
