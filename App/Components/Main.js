@@ -54,7 +54,7 @@ class Main extends Component {
   }
   render() {
     var showError = (
-      this.state.error ? <Text> {this.state.error} </Text> : <View></View>
+      this.state.error ? <Text style={styles.textError}> {this.state.error} </Text> : <View></View>
     );
     return (
       <View style={styles.mainContainer}>
@@ -117,12 +117,23 @@ var styles = StyleSheet.create({
     backgroundColor: 'white',
     borderColor: 'white',
     borderWidth: 1,
-    borderRadius: 8,
+    borderRadius: 5,
     marginBottom: 10,
     marginTop: 10,
-    alignSelf: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
     justifyContent: 'center',
   },
+  textError: {
+    color: 'white',
+    flexDirection: 'row',
+    backgroundColor: 'red',
+    borderColor: 'red',
+    borderWidth: 1,
+    borderRadius: 5,
+    overflow: 'hidden',
+    textAlign: 'center'
+  }
 })
 
 module.exports = Main;
