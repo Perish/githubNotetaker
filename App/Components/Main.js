@@ -130,16 +130,6 @@ var styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'center',
-  },
-  textError: {
-    color: 'white',
-    flexDirection: 'row',
-    backgroundColor: 'red',
-    borderColor: 'red',
-    borderWidth: 1,
-    borderRadius: 5,
-    overflow: 'hidden',
-    textAlign: 'center'
   }
 })
 
