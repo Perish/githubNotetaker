@@ -11,6 +11,7 @@ import React, {
 
 const Api = require('../Utils/Api');
 const Dashboard = require('./Dashboard');
+const Toast = require('@remobile/react-native-toast');
 
 class Main extends Component {
   constructor(props) {
@@ -35,9 +36,10 @@ class Main extends Component {
           .then((res) => {
             if (res.message === 'Not Found') {
               this.setState({
-                error: 'User not found',
+                error: '没有找到该用户',
                 isLoading: false,
               });
+              this.showError();
             } else {
               this.props.navigator.push({
                 title: res.name || 'Select an option',
@@ -52,10 +54,16 @@ class Main extends Component {
             }
           });
   }
+  showError() {
+    let errorSearch = this.state.error;
+    this.setState({
+      error: false,
+    });
+    if (errorSearch) {
+      Toast.showLongBottom(errorSearch);
+    }
+  }
   render() {
-    var showError = (
-      this.state.error ? <Text style={styles.textError}> {this.state.error} </Text> : <View></View>
-    );
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.title}> Search for a Github User </Text>
@@ -75,7 +83,6 @@ class Main extends Component {
           color="#111"
           size="large">
         </ActivityIndicatorIOS>
-        {showError}
       </View>
     )
   }
